@@ -1,2 +1,2 @@
 # wdi-fundamentals-memorygame
-Memory Game
+Browser-based Memory Card game
