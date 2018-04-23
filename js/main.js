@@ -7,6 +7,7 @@
     - Get the second card to show that it's flipped over.
     - Add a reset button instead of a prompt.
     - Disable card flipping after the game is over.
+    - Implement a way to keep track of and display the user's score.
 */
 
 /*
