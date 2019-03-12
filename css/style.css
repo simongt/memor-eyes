@@ -244,10 +244,10 @@ footer.game-footer a:hover {
  * animation fade-in:
  * http://animista.net/play/entrances/fade-in/fade-in
  */
- 
+
 .fade-in {
   -webkit-animation: fade-in 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: fade-in 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+          animation: fade-in 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 @-webkit-keyframes fade-in {
@@ -267,5 +267,35 @@ footer.game-footer a:hover {
 
   100% {
     opacity: 1;
+  }
+}
+
+/**
+ * animation fade-out:
+ * http: //animista.net/play/exits/fade-out/fade-out
+ */
+
+.fade-out {
+  -webkit-animation: fade-out 1s ease-out both;
+          animation: fade-out 1s ease-out both;
+}
+
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

@@ -42,7 +42,7 @@ createBoard = () => {
     cardNode.setAttribute('data-id', index);
     cardNode.classList.toggle('hide');
     cardNode.addEventListener('click', () => flipCard(cardNode, card));
-    gameBoardNode.appendChild(cardNode);    
+    gameBoardNode.appendChild(cardNode);
     t = setTimeout(() => {
       cardNode.classList.toggle('reveal');
       cardNode.classList.toggle('fade-in');
@@ -83,6 +83,7 @@ checkForMatch = (cardNode, card) => {
   // alert user of round result, prompt to play again
   resultMessage && setTimeout(() => {
     confirm(resultMessage + ' Play again?');
+    fadeOutCards();
     resetBoard();
     resumeClicks(); // resume clicks once game board is reset
   }, 250);
@@ -110,6 +111,13 @@ updateTicker = (message) => {
   navbar.innerHTML = message;
   const resetButton = document.createElement('button');
   navbar.appendChild(resetButton);
+}
+
+fadeOutCards = () => {
+  const cardsToFadeOut = document.querySelectorAll('.game-board img');
+  cardsToFadeOut.forEach((card, index) => {
+    card.classList.toggle('fade-out');
+  });
 }
 
 // Reset board: clear the cards in play and flip all cards back.
