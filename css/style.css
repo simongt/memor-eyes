@@ -97,6 +97,14 @@ div.game-board {
   transform-style: preserve-3d;
 }
 
+.hide {
+  visibility: hidden;
+}
+
+.reveal {
+  visibility: visible;
+}
+
 .game-board img:not(:last-child) {
   margin-right: 0.2rem;
 }

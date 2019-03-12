@@ -29,7 +29,7 @@ const unFlippedCard = {
 
 let cardsInPlay = []; // game state
 
-let t; // timeout
+let t; // timeout (needed for clearing timeouts)
 
 // create a game board initially displaying the back of all cards (face down)
 createBoard = () => {
@@ -37,13 +37,15 @@ createBoard = () => {
   const gameBoardNode = document.querySelector('div.game-board');
   shuffle(cards);
   cards.forEach((card, index) => {
+    const cardNode = document.createElement('img');
+    cardNode.setAttribute('src', unFlippedCard.img_url);
+    cardNode.setAttribute('data-id', index);
+    cardNode.classList.toggle('hide');
+    cardNode.addEventListener('click', () => flipCard(cardNode, card));
+    gameBoardNode.appendChild(cardNode);    
     t = setTimeout(() => {
-      const cardNode = document.createElement('img');
-      cardNode.setAttribute('src', unFlippedCard.img_url);
-      cardNode.setAttribute('data-id', index);
+      cardNode.classList.toggle('reveal');
       cardNode.classList.toggle('fade-in');
-      cardNode.addEventListener('click', () => flipCard(cardNode, card));
-      gameBoardNode.appendChild(cardNode);      
     }, (index + 1) * 300);
   });
 }
@@ -78,6 +80,7 @@ checkForMatch = (cardNode, card) => {
       }, 1000);
     });
   }
+  // alert user of round result, prompt to play again
   resultMessage && setTimeout(() => {
     confirm(resultMessage + ' Play again?');
     resetBoard();
@@ -116,10 +119,10 @@ resetBoard = () => {
     // clear the game board    
     clearTimeout(t);
     t = setTimeout(() => {
+      updateTicker('Click on any two above cards to play!');
       document.querySelector('.game-board').innerHTML = '';
       shuffle(cards);
       createBoard();
-      updateTicker('Click on any two above cards to play!');
     }, 500);
   });
 };

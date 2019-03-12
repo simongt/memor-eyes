@@ -29,5 +29,7 @@ There are no dependencies for this app. Simply download / clone this repo to you
 * Implement **elegant modals** instead of tacky `confirm` alerts.
   * http://kanecohen.github.io/modal-vanilla/
   * Add a game **restart button** within the modal.
-* Make **navbar** useful, implement either **tabs or reveal/hide toggler** for links.
+* Make **navbar** useful.
+  * Implement either **tabs or reveal/hide toggler** for links.
+  * Implement links to various **difficulty modes** (easy, medium, hard).
 * Debug why **win alert is popping up twice** on mobile Safari.
