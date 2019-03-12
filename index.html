@@ -3,59 +3,69 @@
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MemorEyes: The Game</title>
-  <!--
-     Apply the "Raleway" font family in the 400, 500, 600, and 700 font weights and the "Droid Serif" font family in the 400 font weight in our stylesheet.
-  -->
-  <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-  <header>
+  <header class="game-header">
     <h1>
       MemorEyes: The Game
     </h1>
   </header>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#instructions">Instructions</a>
-    <a href="#game-board">Game</a>
+  <nav class="game-navbar">
+    <ul>
+      <li><a href="#game-board">Game</a></li>
+      <li><a href="#instructions">Instructions</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
   </nav>
-  <main>
-    <h2 id="about">
-      About Game Developer
-    </h2>
-    <p>
-      <a href="https://www.facebook.com">Facebook</a> |
-      <a href="https://www.instagram.com">Instagram</a> |
-      <a href="https://www.twitter.com">Twitter</a>
-    </p>
-    <h2 id="instructions">
-      Instructions
-    </h2>
-    <p>
-      MemorEyes is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.
-      <!--
-        This div and series of imgs creates a "board" and the individual "cards" that will be displayed on the webpage
-      -->
-      <!-- <div id="game"> -->
-      <div id="game-board" class="board clearfix">
-        <!-- <img src="images/back.png" alt="Queen of Diamonds"> -->
-        <!-- <img src="images/back.png" alt="Queen of Hearts"> -->
-        <!-- <img src="images/back.png" alt="King of Diamonds"> -->
-        <!-- <img src="images/back.png" alt="King of Hearts"> -->
-      </div>
-      <p id="gameResult">Click on any two above cards to play!</p>
-    </p>
+  <main class="game-main">
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <p class="description">
+        MemorEyes is a card memorization game in which all of the cards are laid face down on a surface and two cards are flipped over (face up) with each turn. The object of the game is to turn over pairs of matching pairs of cards (i.e. find a queen-king pair of the same suit: diamond with diamond or heart with heart).
+      </p>
+    </div>
+    <div class="game-container">
+      <div class="game-board"></div>
+      <p class="game-result">Click on any two above cards to play!</p>
+    </div>
+    <div class="about">
+      <h2>About Simon G. Tsegay</h2>
+      <ul class="about">
+        <li>
+          <a href="https://www.simongt.net" target="_blank">Website</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/simongt" target="_blank">LinkedIn</a>
+        </li>
+        <li>
+          <a href="https://www.github.com/simongt" target="_blank">GitHub</a>
+        </li>
+      </ul>
+    </div>
   </main>
-  <!-- <footer class="clearfix"> -->
-  <footer class="board clearfix">
-    <p class="copyright">
-      Copyright 2017
+  <footer class="game-footer">
+    <p>
+      Developed by
+      <span class="name">
+        <a href="mailto:simon@simongt.net" target="_blank">
+          Simon G. Tsegay
+        </a>
+      </span>
     </p>
-    <p class="message">
-      Created with &hearts; by <span class="name">GA</span>
+    <p>
+      Inspired by
+      <span class="name">
+        <a href="https://dash.generalassemb.ly" target="_blank">
+          General Assembly
+        </a>
+      </span>
+
     </p>
   </footer>
   <script src="js/main.js">
