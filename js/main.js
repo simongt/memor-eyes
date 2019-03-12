@@ -55,7 +55,7 @@ flipCard = (cardNode, card) => {
   cardNode.classList.add('card-flipped');
   setTimeout(() => {
     cardNode.setAttribute('src', card.img_url);
-    cardsInPlay.length === 2 && checkForMatch(cardNode, card);
+    cardsInPlay.length === 2 && checkForMatch(cardNode, card)
   }, 250);
 };
 
@@ -63,9 +63,10 @@ flipCard = (cardNode, card) => {
   Check to see if the two cards that the user has flipped over match each other, and provide feedback to the user letting them know if the two cards match, or if they should try again.
 */
 checkForMatch = (cardNode, card) => {
+  pauseClicks();
   let resultMessage = '';
-  if (cardsInPlay[0].suit === cardsInPlay[1].suit) {
-    resultMessage = "You found matching suits!";
+  if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
+    resultMessage = 'You found cards with matching ranks!';
   } else {
     const flippedCards = document.querySelectorAll('.card-flipped');
     flippedCards.forEach(flippedCard => {
@@ -73,13 +74,30 @@ checkForMatch = (cardNode, card) => {
       setTimeout(() => {
         flippedCard.classList.remove('card-flipped');
         flippedCard.setAttribute('src', unFlippedCard.img_url);
+        resumeClicks();
       }, 1000);
     });
   }
   resultMessage && setTimeout(() => {
-    confirm(resultMessage + " Play again?");
+    confirm(resultMessage + ' Play again?');
     resetBoard();
-  }, 100);
+    resetBoard();
+    resumeClicks();
+  }, 250);
+};
+
+pauseClicks = () => {
+  const cards = document.querySelectorAll('div.game-board');
+  cards.forEach(card => {
+    card.style.pointerEvents = 'none';
+  });
+};
+
+resumeClicks = () => {
+  const cards = document.querySelectorAll('div.game-board');
+  cards.forEach(card => {
+    card.style.pointerEvents = 'auto';
+  });
 };
 
 /*
