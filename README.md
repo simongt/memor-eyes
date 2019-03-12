@@ -1,10 +1,14 @@
 # MemorEyes
 
-MemorEyes is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.
+MemorEyes is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching suit cards.
 
 ![MemorEyes](./images/memor-eyes.jpg)
 
-This simple game app was adapted from General Assembly's [Dash](https://dash.generalassemb.ly/) learning curriculum.
+The idea for this simple game app was adopted from General Assembly's [Dash](https://dash.generalassemb.ly/) learning curriculum.
+
+## Getting Started
+
+There are no dependencies for this app. Simply download / clone this repo to your local machine, open `index.html`. It is currently desktop-ready, best viewed with at least 640px width and 668px height.
 
 ## Features
 
@@ -17,6 +21,7 @@ This simple game app was adapted from General Assembly's [Dash](https://dash.gen
 * Get the second card to show that it's flipped over. ✓
 * Disable card flipping after the game is over. ✓
 * Use modals instead of confirm alerts.
-* Add a reset button instead of a prompt.
+  * http://kanecohen.github.io/modal-vanilla/
+  * Add a game restart button within the modal.
 * Implement a way to keep track of and display the user's score.
 * Create breakpoints for widths > 640px, test for mobile responsiveness.

@@ -55,22 +55,29 @@ flipCard = (cardNode, card) => {
   cardNode.classList.add('card-flipped');
   setTimeout(() => {
     cardNode.setAttribute('src', card.img_url);
-    cardsInPlay.length === 2 && checkForMatch();
+    cardsInPlay.length === 2 && checkForMatch(cardNode, card);
   }, 250);
 };
 
 /*
   Check to see if the two cards that the user has flipped over match each other, and provide feedback to the user letting them know if the two cards match, or if they should try again.
 */
-checkForMatch = () => {
-  let resultMessage;
+checkForMatch = (cardNode, card) => {
+  let resultMessage = '';
   if (cardsInPlay[0].suit === cardsInPlay[1].suit) {
-    resultMessage = "You found a match!";
+    resultMessage = "You found matching suits!";
   } else {
-    resultMessage = "Sorry, try again.";
+    const flippedCards = document.querySelectorAll('.card-flipped');
+    flippedCards.forEach(flippedCard => {
+      cardsInPlay.pop();
+      setTimeout(() => {
+        flippedCard.classList.remove('card-flipped');
+        flippedCard.setAttribute('src', unFlippedCard.img_url);
+      }, 1000);
+    });
   }
-  setTimeout(() => {
-    confirm(resultMessage + "Play again?");
+  resultMessage && setTimeout(() => {
+    confirm(resultMessage + " Play again?");
     resetBoard();
   }, 100);
 };
