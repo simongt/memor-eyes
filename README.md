@@ -15,7 +15,7 @@ There are no dependencies for this app. Simply download / clone this repo to you
 * Board resets per round with shuffled cards.
 * Result of each game is displayed within the prompt to play again.
 
-## Updates Needed
+## Backlog
 
 * Detect when the same card is clicked twice, and tell user to pick again. ✓
 * Get the second card to show that it's flipped over. ✓
@@ -24,4 +24,6 @@ There are no dependencies for this app. Simply download / clone this repo to you
   * http://kanecohen.github.io/modal-vanilla/
   * Add a game restart button within the modal.
 * Implement a way to keep track of and display the user's score.
-* Create breakpoints for widths > 640px, test for mobile responsiveness.
+* Test for mobile responsiveness.
+  * Create breakpoints for widths < 640px.
+  * Create breakpoints for height < 480px.
