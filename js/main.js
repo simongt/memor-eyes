@@ -81,7 +81,6 @@ checkForMatch = (cardNode, card) => {
   resultMessage && setTimeout(() => {
     confirm(resultMessage + ' Play again?');
     resetBoard();
-    resetBoard();
     resumeClicks();
   }, 250);
 };
