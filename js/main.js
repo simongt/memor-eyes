@@ -56,8 +56,10 @@ flipCard = (cardNode, card) => {
   cardNode.classList.add('card-flipped');
   setTimeout(() => {
     cardNode.setAttribute('src', card.img_url);
+    // when only one card is flipped over, update ticker
+    cardsInPlay.length === 1 && updateTicker('Pick one more card to compare.');
     // when user has flipped over two cards, check for a match
-    cardsInPlay.length === 2 && checkForMatch(cardNode, card)
+    cardsInPlay.length === 2 && checkForMatch(cardNode, card);
   }, 250);
 };
 
@@ -78,6 +80,7 @@ checkForMatch = (cardNode, card) => {
         flippedCard.setAttribute('src', unFlippedCard.img_url);
         resumeClicks();  // resume clicks once all cards are flipped back
       }, 1000);
+      updateTicker('Not a match. Pick a card to try again.');
     });
   }
   // alert user of round result, prompt to play again
@@ -127,7 +130,7 @@ resetBoard = () => {
     // clear the game board    
     clearTimeout(t);
     t = setTimeout(() => {
-      updateTicker('Click on any two above cards to play!');
+      updateTicker("Click any card to begin the new round.");
       document.querySelector('.game-board').innerHTML = '';
       shuffle(cards);
       createBoard();
