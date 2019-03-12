@@ -1,4 +1,4 @@
-// Game demo consists of these 4 card objects
+// game consists of these 4 card objects
 const cards = [
   {
     rank: 'Queen',
@@ -31,9 +31,9 @@ let cardsInPlay = []; // game state
 
 let t; // timeout
 
-// Create a game board initially displaying the back of all cards (face down).
+// create a game board initially displaying the back of all cards (face down)
 createBoard = () => {
-  // Iterate through available set of cards, creating a DOM node for each one and assigning an image and ID to it.
+  // iterate through available set of cards, creating a DOM node for each one and assigning an image and ID to it
   const gameBoardNode = document.querySelector('div.game-board');
   shuffle(cards);
   cards.forEach((card, index) => {
@@ -48,21 +48,19 @@ createBoard = () => {
   });
 }
 
-/*
-  Selecting, or flipping over, a card... When the user flips a card over, you'll want to add that card to the array of cards that are in play. If the user has flipped over two cards, you'll want to check for a match.
-*/
+// when the user selects / flips over a card, add that card to the array of cards that are in play
 flipCard = (cardNode, card) => {
   cardsInPlay.push(card);
   cardNode.classList.add('card-flipped');
   setTimeout(() => {
     cardNode.setAttribute('src', card.img_url);
+    // when user has flipped over two cards, check for a match
     cardsInPlay.length === 2 && checkForMatch(cardNode, card)
   }, 250);
 };
 
-/*
-  Check to see if the two cards that the user has flipped over match each other, and provide feedback to the user letting them know if the two cards match, or if they should try again.
-*/
+
+// if the two cards that the user has flipped over match each other, alert the user, otherwise flip cards back over and try again.
 checkForMatch = (cardNode, card) => {
   pauseClicks(); // pause clicks once two cards are flipped over
   let resultMessage = '';
@@ -76,7 +74,7 @@ checkForMatch = (cardNode, card) => {
       setTimeout(() => {
         flippedCard.classList.remove('card-flipped');
         flippedCard.setAttribute('src', unFlippedCard.img_url);
-        resumeClicks();  // resume once cards are flipped back
+        resumeClicks();  // resume clicks once all cards are flipped back
       }, 1000);
     });
   }
@@ -87,6 +85,7 @@ checkForMatch = (cardNode, card) => {
   }, 250);
 };
 
+// pause clicks to reduce unwanted behavior
 pauseClicks = () => {
   const cards = document.querySelectorAll('div.game-board');
   cards.forEach(card => {
@@ -94,6 +93,7 @@ pauseClicks = () => {
   });
 };
 
+// resume clicks once it's safe to continue gameplay
 resumeClicks = () => {
   const cards = document.querySelectorAll('div.game-board');
   cards.forEach(card => {
@@ -101,6 +101,7 @@ resumeClicks = () => {
   });
 };
 
+// update the ticker <p> tag below the cards on display with round results
 updateTicker = (message) => {
   const navbar = document.querySelector('p.game-result');
   navbar.innerHTML = message;
@@ -108,9 +109,7 @@ updateTicker = (message) => {
   navbar.appendChild(resetButton);
 }
 
-/*
-  Reset board: clear the cards in play and flip all cards back.
-*/
+// Reset board: clear the cards in play and flip all cards back.
 resetBoard = () => {
   cardsInPlay = [];
   cards.forEach((card, index) => {
@@ -120,6 +119,7 @@ resetBoard = () => {
       document.querySelector('.game-board').innerHTML = '';
       shuffle(cards);
       createBoard();
+      updateTicker('Click on any two above cards to play!');
     }, 500);
   });
 };
