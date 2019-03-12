@@ -3,10 +3,10 @@
 MemorEyes is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching rank cards.
 
 <p align="center">
-  <img src="./images/memor-eyes.jpg" alt="MemorEyes">
+  <img src="./images/memor-eyes.jpg" alt="MemorEyes" />
 </p>
 
-The idea for this simple game app was adopted from General Assembly's [Dash](https://dash.generalassemb.ly/) learning curriculum.
+This simple game app is built with HTML, CSS, Vanilla JS. FlexBox is used for the layout. The idea was originally adopted from General Assembly's [Dash](https://dash.generalassemb.ly/) learning curriculum.
 
 ## Getting Started
 
