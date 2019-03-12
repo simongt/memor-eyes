@@ -19,11 +19,12 @@ There are no dependencies for this app. Simply download / clone this repo to you
 
 * Detect when the same card is clicked twice, and tell user to pick again. ✓
 * Get the second card to show that it's flipped over. ✓
-* Disable card flipping after the game is over. ✓
+* Disable card flipping after the second card is flipped over.
+* Once cards are matched up, make them fade away.
 * Use modals instead of confirm alerts.
   * http://kanecohen.github.io/modal-vanilla/
   * Add a game restart button within the modal.
 * Implement a way to keep track of and display the user's score.
 * Test for mobile responsiveness.
-  * Create breakpoints for widths < 640px.
+  * Create breakpoints for width < 640px. ✓
   * Create breakpoints for height < 480px.
