@@ -43,7 +43,7 @@ createBoard = () => {
     cardNode.classList.toggle('hide');
     cardNode.addEventListener('click', () => flipCard(cardNode, card));
     gameBoardNode.appendChild(cardNode);
-    t = setTimeout(() => {
+    t = setTimeout(() => { // refactor using promises / async-await
       cardNode.classList.toggle('reveal');
       cardNode.classList.toggle('fade-in');
     }, (index + 1) * 300);
@@ -54,7 +54,7 @@ createBoard = () => {
 flipCard = (cardNode, card) => {
   cardsInPlay.push(card);
   cardNode.classList.add('card-flipped');
-  setTimeout(() => {
+  setTimeout(() => { // refactor using promises / async-await
     cardNode.setAttribute('src', card.img_url);
     // when only one card is flipped over, update ticker
     cardsInPlay.length === 1 && updateTicker('Pick one more card to compare.');
@@ -75,7 +75,7 @@ checkForMatch = (cardNode, card) => {
     const flippedCards = document.querySelectorAll('.card-flipped');
     flippedCards.forEach(flippedCard => {
       cardsInPlay.pop();
-      setTimeout(() => {
+      setTimeout(() => { // refactor using promises / async-await
         flippedCard.classList.remove('card-flipped');
         flippedCard.setAttribute('src', unFlippedCard.img_url);
         resumeClicks();  // resume clicks once all cards are flipped back
@@ -84,7 +84,7 @@ checkForMatch = (cardNode, card) => {
     });
   }
   // alert user of round result, prompt to play again
-  resultMessage && setTimeout(() => {
+  resultMessage && setTimeout(() => { // refactor using promises / async-await
     confirm(resultMessage + ' Play again?');
     fadeOutCards();
     resetBoard();
@@ -129,7 +129,7 @@ resetBoard = () => {
   cards.forEach((card, index) => {
     // clear the game board    
     clearTimeout(t);
-    t = setTimeout(() => {
+    t = setTimeout(() => { // refactor using promises / async-await
       updateTicker("Click any card to begin the new round.");
       document.querySelector('.game-board').innerHTML = '';
       shuffle(cards);
