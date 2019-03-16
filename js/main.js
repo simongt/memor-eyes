@@ -43,7 +43,7 @@ createBoard = () => {
     cardNode.classList.toggle('hide');
     cardNode.addEventListener('click', () => flipCard(cardNode, card));
     gameBoardNode.appendChild(cardNode);
-    t = setTimeout(() => { // refactor using promises / async-await
+    t = setTimeout(() => {
       cardNode.classList.toggle('reveal');
       cardNode.classList.toggle('fade-in');
     }, (index + 1) * 300);
@@ -54,13 +54,11 @@ createBoard = () => {
 flipCard = (cardNode, card) => {
   cardsInPlay.push(card);
   cardNode.classList.add('card-flipped');
-  setTimeout(() => { // refactor using promises / async-await
-    cardNode.setAttribute('src', card.img_url);
-    // when only one card is flipped over, update ticker
-    cardsInPlay.length === 1 && updateTicker('Pick one more card to compare.');
-    // when user has flipped over two cards, check for a match
-    cardsInPlay.length === 2 && checkForMatch(cardNode, card);
-  }, 250);
+  cardNode.setAttribute('src', card.img_url);
+  // when only one card is flipped over, update ticker
+  cardsInPlay.length === 1 && updateTicker('Pick one more card to compare.');
+  // when user has flipped over two cards, check for a match
+  cardsInPlay.length === 2 && checkForMatch(cardNode, card);
 };
 
 
@@ -129,7 +127,7 @@ resetBoard = () => {
   cards.forEach((card, index) => {
     // clear the game board    
     clearTimeout(t);
-    t = setTimeout(() => { // refactor using promises / async-await
+    t = setTimeout(() => { 
       updateTicker("Click any card to begin the new round.");
       document.querySelector('.game-board').innerHTML = '';
       shuffle(cards);
