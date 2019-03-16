@@ -22,7 +22,7 @@ There are no dependencies for this app. Simply download / clone this repo to you
 * Detect when the **same card is clicked twice**, and tell user to pick again. ✓
 * Display that the **second card flipped over** before win alert pops up. ✓
 * **Disable card flipping** after the second card is flipped over. ✓
-* Implement **asynchronous logic > timeouts**.
+* Implement **asynchronous logic > timeouts**. ✓
 * Implement a **scoring system**.
   * **The less turns it takes** to find a match, the better the score (golf-like).
   * Update the **ticker display** (below cards).

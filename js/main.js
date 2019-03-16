@@ -54,13 +54,11 @@ createBoard = () => {
 flipCard = (cardNode, card) => {
   cardsInPlay.push(card);
   cardNode.classList.add('card-flipped');
-  setTimeout(() => {
-    cardNode.setAttribute('src', card.img_url);
-    // when only one card is flipped over, update ticker
-    cardsInPlay.length === 1 && updateTicker('Pick one more card to compare.');
-    // when user has flipped over two cards, check for a match
-    cardsInPlay.length === 2 && checkForMatch(cardNode, card);
-  }, 250);
+  cardNode.setAttribute('src', card.img_url);
+  // when only one card is flipped over, update ticker
+  cardsInPlay.length === 1 && updateTicker('Pick one more card to compare.');
+  // when user has flipped over two cards, check for a match
+  cardsInPlay.length === 2 && checkForMatch(cardNode, card);
 };
 
 
@@ -75,7 +73,7 @@ checkForMatch = (cardNode, card) => {
     const flippedCards = document.querySelectorAll('.card-flipped');
     flippedCards.forEach(flippedCard => {
       cardsInPlay.pop();
-      setTimeout(() => {
+      setTimeout(() => { // refactor using promises / async-await
         flippedCard.classList.remove('card-flipped');
         flippedCard.setAttribute('src', unFlippedCard.img_url);
         resumeClicks();  // resume clicks once all cards are flipped back
@@ -84,7 +82,7 @@ checkForMatch = (cardNode, card) => {
     });
   }
   // alert user of round result, prompt to play again
-  resultMessage && setTimeout(() => {
+  resultMessage && setTimeout(() => { // refactor using promises / async-await
     confirm(resultMessage + ' Play again?');
     fadeOutCards();
     resetBoard();
@@ -129,7 +127,7 @@ resetBoard = () => {
   cards.forEach((card, index) => {
     // clear the game board    
     clearTimeout(t);
-    t = setTimeout(() => {
+    t = setTimeout(() => { 
       updateTicker("Click any card to begin the new round.");
       document.querySelector('.game-board').innerHTML = '';
       shuffle(cards);
